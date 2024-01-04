@@ -29,7 +29,7 @@ export default {
       });
       const res = {"errcode":"1","data":data}
       // 返回json文件的内容，设置响应类型为application/json
-      return new Response(res, {
+      return new Response(JSON.stringify(res), {
         headers: { "Content-Type": "application/json" }
       })
     }
