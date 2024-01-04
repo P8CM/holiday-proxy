@@ -18,6 +18,7 @@ export default {
       const fileURL = `https://raw.githubusercontent.com/NateScarlet/holiday-cn/master/${year}.json`
       // 从URL获取json文件的内容
       const fileResponse = await fetch(fileURL);
+      console.log(fileResponse.body);
       const data = JSON.parse(fileResponse.body).days.map(node=>{
         return {
           "remark": node.name,
@@ -27,7 +28,7 @@ export default {
       });
       const res = {"errcode":"1","data":data}
       // 返回json文件的内容，设置响应类型为application/json
-      return new Response(fileResponse.body, {
+      return new Response(res, {
         headers: { "Content-Type": "application/json" }
       })
     }
