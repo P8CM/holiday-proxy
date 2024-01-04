@@ -18,8 +18,8 @@ export default {
       const fileURL = `https://raw.githubusercontent.com/NateScarlet/holiday-cn/master/${year}.json`
       // 从URL获取json文件的内容
       const fileResponse = await fetch(fileURL);
-      console.log(fileResponse.body);
-      const data = JSON.parse(fileResponse.body).days.map(node=>{
+      const days = await fileResponse.json().days;
+      const data = days.map(node=>{
         return {
           "remark": node.name,
           "date": node.date,
